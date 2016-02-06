@@ -1,0 +1,65 @@
+$gutter-width: 15px;
+$mobile-break: 500px + (2 * $gutter-width);
+
+
+ul[swing-stack] {
+    
+    height: 500px;
+    background: #ED5D52;
+    position: absolute;
+    margin-top: 50px;
+    //left: 50%;
+    //margin-left: -250px;
+    border-radius: 10px;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: $gutter-width;
+    right: $gutter-width;
+    padding-left: 0;
+    
+    @media screen and (min-width: $mobile-break) {
+        width: 500px;
+        left: calc(50% - 250px);
+    }
+    
+    li {
+        width: 200px;
+        height: 300px;
+        list-style: none;
+        background: #fff;
+        border-radius: 5px;
+        position: absolute;
+        top: 100px;
+        left: calc(50% - 100px);
+        box-shadow: 0 0 2px rgba(0, 0, 0, .2), 1px 1px 1px rgba(0, 0, 0, .2);
+        text-align: center;
+        border: 10px solid #ECECEC;
+        box-sizing: border-box;
+        cursor: default;
+        padding-top: 50px;
+        
+        &.in-deck {
+            &:nth-child(3) {
+                top: 2px;
+                transform: translate(2px, 2px) rotate(0.4deg);
+            }
+            &:nth-child(2) {
+                top: 4px;
+                transform: translate(-4px, -2px) rotate(-1deg);
+            }
+        }
+        
+        &.empty-stack {
+            background: transparentize(black, .8);
+            box-shadow: none;
+            color: white;
+            text-align: center;
+            border: none;
+            font-size: 24px;
+            word-wrap: break-word;
+            white-space: normal;
+            padding-top: 110px;
+        }
+    }
+}
