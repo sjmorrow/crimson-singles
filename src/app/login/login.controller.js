@@ -6,7 +6,7 @@
         .controller('LoginController', LoginController);
 
     /** @ngInject */
-    function LoginController($firebaseAuth, FIREBASE_URL, $state) {
+    function LoginController($firebaseAuth, FIREBASE_URL, $state, $uibModal) {
         var vm = this;
         var fbRef = new Firebase(FIREBASE_URL);
         var auth = $firebaseAuth(fbRef);
@@ -21,9 +21,10 @@
             }).then(function (authData) {
                 vm.authData = authData;
                 $state.go('home.cards');
-            }).catch(function (error) {
-                //TODO: Alert error
-                vm.error = error;
+            }).catch(function () {
+                $uibModal.open({
+                    templateUrl: 'app/login/invalid-credentials.modal.html'
+                });
             });
         };
 
@@ -34,9 +35,10 @@
             }).then(function(userdata) {
                 vm.authData = userdata;
                 vm.performLogin();
-            }).catch(function(error) {
-                //TODO: Alert error
-                vm.error = error;
+            }).catch(function() {
+                $uibModal.open({
+                    templateUrl: 'app/login/registration-error.modal.html'
+                });
             });
         };
     }

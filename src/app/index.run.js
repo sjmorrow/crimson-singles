@@ -17,6 +17,10 @@
                 $state.go("login");
             }
         });
+        $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams, error) {
+            //Prevent left menu from persisting across states
+            angular.element('body').css({left: 0});
+        });
         /*eslint-enable */
     }
 

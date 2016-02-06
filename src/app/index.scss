@@ -41,7 +41,12 @@ body {
 html, body, body > div[ui-view] {
     height: 100%;
 }
-
+a {
+    color: $accent-color;
+    &:hover {
+        color: $light-color;
+    }
+}
 .btn {
     &.btn-base {
         background: $base-color;
