@@ -9,7 +9,7 @@
     function routerConfig($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('login', {
-                url: '/',
+                url: '/login',
                 templateUrl: 'app/login/login.html',
                 controller: 'LoginController',
                 controllerAs: 'login'
@@ -21,7 +21,7 @@
                 controllerAs: 'forgot'
             })
             .state('home', {
-                url: '/home',
+                url: '/',
                 templateUrl: 'app/main/main.html',
                 controller: 'MainController',
                 controllerAs: 'main',
