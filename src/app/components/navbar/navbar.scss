@@ -1,11 +1,11 @@
 nav.navbar {
-    background: $lightColor;
+    background: $light-color;
     a {
         color: white;
     }
     .nav > li > a:hover,
     .nav > li > a:focus {
-        background-color: $mediumColor;
+        background-color: $medium-color;
     }
     .navbar-collapse {
         &.collapse {
@@ -21,12 +21,12 @@ nav.navbar {
 }
 
 .spmenu {
-    background: $lightColor;
+    background: $light-color;
     &.spmenu-left {
         border-right: 0px;
     }
     h3 {
-        background: $lightColor;
+        background: $light-color;
         color: white;
         border-bottom: 0px;
         height: 51px;
@@ -35,10 +35,10 @@ nav.navbar {
         color: white;
         padding: 1em;
         &.active {
-            background: $accentColor;
+            background: $accent-color;
         }
         &:hover {
-            background: $mediumColor;
+            background: $medium-color;
             text-decoration: none;
         }
     }
