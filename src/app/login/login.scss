@@ -12,50 +12,61 @@
 
 .login {
 
-    position: relative;
-    height: 100%;
-    width: 100%;
+//    position: relative;
+//    height: 100%;
+//    width: 100%;
     h1 {
         margin: 0 auto;
+        padding-top: 1em;
         position: relative;
         top: 10%;
         color: white;
         text-align: center;
     }
-    form {
+}
+
+form.login-form {
+    display: block;
+    margin: auto;
+    label {
+        color: white;
+        margin-top: 2em;
+    }
+    input {
+        height: 50px;
+        background: rgba(white, 0);
+        border-color: $light-color;
+        border: 0px;
+        border-bottom: 1px solid $accent-color;
+        border-radius: 0px;
+        color: white;
+        font-size: 28px;
         display: block;
-        @extend .center-vertically;
-        margin: auto;
-        width: 90%;
-        @include respond-to(medium) {
-            width: 33%;
-        }
-        label {
-            color: white;
-            margin-top: 2em;
-        }
-        input {
-            height: 50px;
-            background: rgba(white, 0);
-            border-color: $light-color;
-            border: 0px;
-            border-bottom: 1px solid $accent-color;
-            border-radius: 0px;
-            color: white;
-            font-size: 28px;
-            display: block;
-            width: 100%;
-            padding: 0;
-            &:focus {
-                border-color: white;
-                outline: none;
-                box-shadow: none;
-            }
-        }
-        button {
-            color: white;
-            height: 50px;
-            font-size: 22px;
+        width: 100%;
+        padding: 0;
+        &:focus {
+            border-color: white;
+            outline: none;
+            box-shadow: none;
         }
     }
+    button {
+        color: white;
+        height: 50px;
+        font-size: 22px;
+    }
+}
+
+.forgot-password, .login {
+    color: white;
+    p {
+        color: white;
+        position: relative;
+        top: 12%;
+        font-size: 16px;
+    }
+}
+
+.login .center-vertically {
+    top: 40%;
 }

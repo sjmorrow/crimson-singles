@@ -14,6 +14,12 @@
                 controller: 'LoginController',
                 controllerAs: 'login'
             })
+            .state('forgot', {
+                url: '/forgot',
+                templateUrl: 'app/forgot-password/forgot-password.html',
+                controller: 'ForgotController',
+                controllerAs: 'forgot'
+            })
             .state('home', {
                 url: '/home',
                 templateUrl: 'app/main/main.html',
