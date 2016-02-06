@@ -1,15 +1,11 @@
 ul[swing-stack] {
-    
-    height: 500px;
-    background: $light-color;
+    height: 100%;
     position: absolute;
-    margin-top: 50px;
-    border-radius: 10px;
     overflow: hidden;
     top: 0;
     bottom: 0;
-    left: $gutter-width;
-    right: $gutter-width;
+    left: 0;
+    right: 0;
     padding-left: 0;
     
     @media screen and (min-width: $mobile-break) {
@@ -18,20 +14,22 @@ ul[swing-stack] {
     }
     
     li {
-        width: 200px;
-        height: 300px;
+        width: calc(100% - 30px);
+        margin-left: 15px;
+        margin-right: 15px;
+        height: 350px;
         list-style: none;
         background: #fff;
         border-radius: 5px;
         position: absolute;
-        top: 100px;
-        left: calc(50% - 100px);
+        //left: calc(50% - 100px);
         box-shadow: 0 0 2px rgba(0, 0, 0, .2), 1px 1px 1px rgba(0, 0, 0, .2);
         text-align: center;
-        border: 10px solid #ECECEC;
+        border: 3px solid $medium-color;
         box-sizing: border-box;
         cursor: default;
-        padding-top: 50px;
+        background: $dark-color;
+        color: white;
         
         &.in-deck {
             &:nth-child(3) {
@@ -54,6 +52,32 @@ ul[swing-stack] {
             word-wrap: break-word;
             white-space: normal;
             padding-top: 110px;
+        }
+
+        .class-image {
+            height: 200px;
+            background-size: cover;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border-bottom: 3px solid $medium-color;
+        }
+
+        .info {
+            padding: 5px;
+
+
+        }
+
+        .gamertag {
+            margin-top: 0;
+        }
+
+        .light-level {
+            color: $light-level-color;
+
+            &:before {
+                content: "\2726";
+            }
         }
     }
 }

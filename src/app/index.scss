@@ -60,5 +60,8 @@ html, body, body > div[ui-view] {
     }
 }
 
+.body-content {
+    height: calc(100% - 50px);
+}
 
 

@@ -3,6 +3,12 @@
         No more Guardians
     </li>
     <li swing-card ng-repeat="guardian in main.firebase.guardians">
-        {{guardian.name}}
+        <div class="class-image" style="background-image: url(../../assets/images/{{guardian.preferred_subclass}}.jpg);">
+        </div>
+        <div class="info">
+            <h3 class="gamertag">{{guardian.gamertag}}</h3>
+            <h4 class="light-level">{{guardian.level}}</h4>
+            <h5>"{{guardian.bio}}"</h5>
+        </div>
     </li>
 </ul>
