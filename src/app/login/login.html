@@ -3,10 +3,11 @@
     <h1 class="title">Crimson Singles</h1>
     <form class="form">
         <label>Email</label>
-        <input type="text">
+        <input type="text" ng-model="login.email">
         <label>Password</label>
-        <input type="password">
+        <input type="password" ng-model="login.password">
         <label></label>
-        <button class="btn btn-block" type="submit">Login</button>
+        <button class="btn btn-accent btn-block" type="submit" ng-click="login.performLogin()">Login</button>
+        <button class="btn btn-light btn-block" type="submit" ng-click="login.registerUser()">Register</button>
     </form>
 </div>

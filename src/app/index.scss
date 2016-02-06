@@ -13,6 +13,13 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 // bower:scss
 // endbower
 
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
+
 body {
     font-family: 'Lato', sans-serif;
 }
@@ -35,10 +42,23 @@ html, body, body > div[ui-view] {
     height: 100%;
 }
 
+.btn {
+    &.btn-base {
+        background: $base-color;
+    }
+    &.btn-dark {
+        background: $dark-color;
+    }
+    &.btn-medium {
+        background: $medium-color;
+    }
+    &.btn-light {
+        background: $light-color;
+    }
+    &.btn-accent {
+        background: $accent-color;
+    }
+}
 
-/**
- *  Do not remove the comments below. It's the markers used by gulp-inject to inject
- *  all your sass files automatically
- */
-// injector
-// endinjector
+
+

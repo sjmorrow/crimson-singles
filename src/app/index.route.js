@@ -11,14 +11,19 @@
             .state('login', {
                 url: '/',
                 templateUrl: 'app/login/login.html',
-                controller: 'MainController',
-                controllerAs: 'main'
+                controller: 'LoginController',
+                controllerAs: 'login'
             })
             .state('home', {
                 url: '/home',
                 templateUrl: 'app/main/main.html',
                 controller: 'MainController',
-                controllerAs: 'main'
+                controllerAs: 'main',
+                resolve: {
+                    "currentAuth": ["FBAuth", function (FBAuth) {
+                        return FBAuth.$requireAuth();
+                    }]
+                }
             })
             .state('home.cards', {
                 url: '/cards',
