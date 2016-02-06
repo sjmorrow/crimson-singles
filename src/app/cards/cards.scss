@@ -1,15 +1,9 @@
-$gutter-width: 15px;
-$mobile-break: 500px + (2 * $gutter-width);
-
-
 ul[swing-stack] {
     
     height: 500px;
-    background: #ED5D52;
+    background: $light-color;
     position: absolute;
     margin-top: 50px;
-    //left: 50%;
-    //margin-left: -250px;
     border-radius: 10px;
     overflow: hidden;
     top: 0;

@@ -4,6 +4,7 @@
  */
 $navbar-inverse-link-color: #5AADBB;
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900);
 
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
@@ -11,6 +12,10 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
  */
 // bower:scss
 // endbower
+
+body {
+    font-family: 'Lato', sans-serif;
+}
 
 .browsehappy {
   margin: 0.2em 0;
@@ -26,12 +31,6 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
     width: 50px;
   }
 }
-
-$baseColor: #1F3547;
-$darkColor: #463547;
-$mediumColor: #653547;
-$lightColor: #9D3547;
-$accentColor: #ED3547;
 
 
 /**
