@@ -31,6 +31,9 @@ body {
     width: 50px;
   }
 }
+html, body, body > div[ui-view] {
+    height: 100%;
+}
 
 .body-content {
     height: calc(100% - 50px);
