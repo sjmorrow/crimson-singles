@@ -1,21 +1,30 @@
+<ng-slide-push-menu position="left" id="menu">
+  <h3></h3>
+  <a href="#" ui-sref="home.cards" ui-sref-active="active">Find Matches</a>
+  <a href="#">Item 2</a>
+  <a href="#">Item 3</a>
+  <a href="#">Item 4</a>
+  <a href="#">Item 5</a>
+  <a href="#">Item 6</a>
+</ng-slide-push-menu>
+
 <nav class="navbar navbar-static-top">
   <div class="container-fluid">
-    <div class="navbar-header" ng-click="vm.navbarCollapsed = !vm.navbarCollapsed">
-      <a class="navbar-brand" >
-        <span class="glyphicon glyphicon-home"></span> {{vm.title}}
+    <div class="navbar-header" ng-push-menu="menu">
+      <a class="navbar-brand">
+        <i class="icon-menu"></i>
       </a>
+        <a class="navbar-brand">{{vm.title}}</a>
     </div>
 
+<!--
     <div class="navbar-collapse" id="bs-example-navbar-collapse-6" ng-class="{'collapse': vm.navbarCollapsed}">
       <ul class="nav navbar-nav">
         <li class="active"><a ng-href="#">Home</a></li>
         <li><a ng-href="#">About</a></li>
         <li><a ng-href="#">Contact</a></li>
       </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li>Application was created {{ vm.relativeDate }}.</li>
-      </ul>
     </div>
+-->
   </div>
 </nav>

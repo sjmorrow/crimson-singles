@@ -1,15 +1,45 @@
 nav.navbar {
-  background: $lightColor;
-  a {
-    color: white;
-  }
-  .nav > li > a:hover, .nav > li > a:focus {
-    background-color: $mediumColor;
-  }
-  .navbar-collapse {
-    
-    &.collapse {
-      display: block;
+    background: $lightColor;
+    a {
+        color: white;
     }
-  }
+    .nav > li > a:hover,
+    .nav > li > a:focus {
+        background-color: $mediumColor;
+    }
+    .navbar-collapse {
+        &.collapse {
+            display: block;
+        }
+    }
+    
+    i {
+        font-size: 30px;
+        position: relative;
+        top: -4px;
+    }
+}
+
+.spmenu {
+    background: $lightColor;
+    &.spmenu-left {
+        border-right: 0px;
+    }
+    h3 {
+        background: $lightColor;
+        color: white;
+        border-bottom: 0px;
+        height: 51px;
+    }
+    a {
+        color: white;
+        padding: 1em;
+        &.active {
+            background: $accentColor;
+        }
+        &:hover {
+            background: $mediumColor;
+            text-decoration: none;
+        }
+    }
 }
