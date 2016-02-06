@@ -26,6 +26,9 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
     width: 50px;
   }
 }
+html, body, body > div[ui-view] {
+    height: 100%;
+}
 
 $baseColor: #1F3547;
 $darkColor: #463547;
