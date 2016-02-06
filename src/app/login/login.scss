@@ -7,6 +7,7 @@
     filter: brightness(60%);
     background: url(../../assets/images/destiny-crimson-logo-bg.jpg);
     background-position: center;
+    z-index: -1;
 }
 
 .login {
@@ -14,7 +15,13 @@
     position: relative;
     height: 100%;
     width: 100%;
-
+    h1 {
+        margin: 0 auto;
+        position: relative;
+        top: 10%;
+        color: white;
+        text-align: center;
+    }
     form {
         display: block;
         @extend .center-vertically;
@@ -25,19 +32,20 @@
         }
         label {
             color: white;
+            margin-top: 2em;
         }
         input {
-            //margin-bottom: 1em;
             height: 50px;
             background: rgba(white, 0);
-            border-color: $lightColor;
+            border-color: $light-color;
             border: 0px;
-            border-bottom: 1px solid $accentColor;
+            border-bottom: 1px solid $accent-color;
             border-radius: 0px;
             color: white;
             font-size: 28px;
             display: block;
             width: 100%;
+            padding: 0;
             &:focus {
                 border-color: white;
                 outline: none;
@@ -45,9 +53,10 @@
             }
         }
         button {
-            background-color: $accentColor;
+            background-color: $accent-color;
             color: white;
             height: 50px;
+            font-size: 22px;
         }
     }
 }
