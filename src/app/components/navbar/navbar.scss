@@ -1,3 +1,15 @@
-.acme-navbar-text{
-  color: white;
+nav.navbar {
+  background: $lightColor;
+  a {
+    color: white;
+  }
+  .nav > li > a:hover, .nav > li > a:focus {
+    background-color: $mediumColor;
+  }
+  .navbar-collapse {
+    
+    &.collapse {
+      display: block;
+    }
+  }
 }
