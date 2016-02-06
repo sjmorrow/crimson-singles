@@ -36,7 +36,14 @@
                 templateUrl: 'app/cards/cards.html',
                 controller: 'MainController',
                 controllerAs: 'main'
+            })
+            .state('home.account', {
+                url: '/account',
+                templateUrl: 'app/account/account.html',
+                controller: 'AccountController',
+                controllerAs: 'account'
             });
+
 
         $urlRouterProvider.otherwise('/');
     }

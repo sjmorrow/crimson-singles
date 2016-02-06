@@ -11,33 +11,17 @@
         var fbRef = new Firebase(FIREBASE_URL);
         var auth = $firebaseAuth(fbRef);
 
-        vm.performLogin = function () {
-            vm.authData = null;
-            vm.error = null;
-
-            auth.$authWithPassword({
-                email: vm.email,
-                password: vm.password
-            }).then(function (authData) {
-                vm.authData = authData;
-                $state.go('home.cards');
+        vm.reset = function () {
+            auth.$resetPassword({
+                email: vm.email
+            }).then(function () {
+                $uibModal.open({
+                    templateUrl: 'app/forgot-password/password-reset-successful.modal.html'
+                });
+                $state.go('login');
             }).catch(function () {
                 $uibModal.open({
-                    templateUrl: 'app/login/invalid-credentials.modal.html'
-                });
-            });
-        };
-
-        vm.registerUser = function() {
-            auth.$createUser({
-                email: vm.email,
-                password: vm.password
-            }).then(function(userdata) {
-                vm.authData = userdata;
-                vm.performLogin();
-            }).catch(function() {
-                $uibModal.open({
-                    templateUrl: 'app/login/registration-error.modal.html'
+                    templateUrl: 'app/forgot-password/password-reset-failed.modal.html'
                 });
             });
         };

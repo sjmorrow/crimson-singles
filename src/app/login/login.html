@@ -9,8 +9,8 @@
         <div class="col-md-offset-4 col-xs-12 col-md-4">
             <form class="form login-form">
                 <label>Email</label>
-                <input type="text" ng-model="login.email">
-                <label>Password</label>
+                <input type="email" ng-model="login.email">
+                <label>Password <span class="pull-right"><a href="" ui-sref="forgot">Forgot Password?</a></span></label>
                 <input type="password" ng-model="login.password">
                 <label></label>
                 <button class="btn btn-accent btn-block" type="submit" ng-click="login.performLogin()">Login</button>

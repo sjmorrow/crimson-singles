@@ -20,7 +20,11 @@
                 password: vm.password
             }).then(function (authData) {
                 vm.authData = authData;
-                $state.go('home.cards');
+                if (authData.password.isTemporaryPassword) {
+                    $state.go('home.account');
+                } else {
+                    $state.go('home.cards');
+                }
             }).catch(function () {
                 $uibModal.open({
                     templateUrl: 'app/login/invalid-credentials.modal.html'

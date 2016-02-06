@@ -11,10 +11,6 @@
 }
 
 .login {
-
-//    position: relative;
-//    height: 100%;
-//    width: 100%;
     h1 {
         margin: 0 auto;
         padding-top: 1em;
@@ -31,6 +27,7 @@ form.login-form {
     label {
         color: white;
         margin-top: 2em;
+        width: 100%;
     }
     input {
         height: 50px;
