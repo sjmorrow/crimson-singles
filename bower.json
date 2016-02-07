@@ -8,7 +8,6 @@
     "angular-cookies": "~1.4.2",
     "angular-messages": "~1.4.2",
     "angular-resource": "~1.4.2",
-    "angular-swing": "#8816bbb2459d3244a4d792f72be02aad7cd0733f",
     "angular-toastr": "~1.5.0",
     "angular-touch": "~1.4.2",
     "angular-ui-router": "~0.2.15",
@@ -45,7 +44,6 @@
   },
   "resolutions": {
     "jquery": "~2.1.4",
-    "angular": "~1.4.2",
-    "angular-swing": "8816bbb2459d3244a4d792f72be02aad7cd0733f"
+    "angular": "~1.4.2"
   }
 }
