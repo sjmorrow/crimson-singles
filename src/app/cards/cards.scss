@@ -101,8 +101,8 @@ ul[swing-stack] {
     bottom: -5%;
     
     @include respond-to(extra-small) {
-        width: 390px;
-        left: calc(50% - 195px);
+        width: 382px;
+        left: calc(50% - 191px);
     }
     
     .control {
