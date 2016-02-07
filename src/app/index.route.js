@@ -21,7 +21,7 @@
                 controllerAs: 'forgot'
             })
             .state('home', {
-                url: '/',
+                url: '',
                 templateUrl: 'app/main/main.html',
                 controller: 'MainController',
                 controllerAs: 'main',
@@ -34,8 +34,32 @@
             .state('home.cards', {
                 url: '/cards',
                 templateUrl: 'app/cards/cards.html',
-                controller: 'MainController',
-                controllerAs: 'main'
+                controller: 'CardsController',
+                controllerAs: 'cards'
+            })
+            .state('home.guardians', {
+                url: '/guardians',
+                templateUrl: 'app/guardians/guardians.html',
+                controller: 'GuardiansController',
+                controllerAs: 'guardians'
+            })
+            .state('home.matches', {
+                url: '/matches',
+                templateUrl: 'app/matches/matches.html',
+                controller: 'MatchesController',
+                controllerAs: 'matches'
+            })
+            .state('home.favorites', {
+                url: '/favorites',
+                templateUrl: 'app/favorites/favorites.html',
+                controller: 'FavoritesController',
+                controllerAs: 'favorites'
+            })
+            .state('home.donate', {
+                url: '/donate',
+                templateUrl: 'app/donate/donate.html',
+                controller: 'DonateController',
+                controllerAs: 'donate'
             })
             .state('home.account', {
                 url: '/account',

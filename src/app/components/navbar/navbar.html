@@ -1,23 +1,24 @@
 <ng-slide-push-menu position="left" id="menu">
-  <h3></h3>
-  <a href="#" ui-sref="home.cards" ui-sref-active="active" ng-push-menu="menu">Find Matches</a>
-  <a href="#" ui-sref="home.account" ui-sref-active="active" ng-push-menu="menu">Your Guardians</a>
-  <a href="#" ui-sref="home.account" ui-sref-active="active" ng-push-menu="menu">Matched Guardians</a>
-  <a href="#" ui-sref="home.account" ui-sref-active="active" ng-push-menu="menu">Favorite Guardians</a>
-  <a href="#" ui-sref="home.account" ui-sref-active="active" ng-push-menu="menu">Account</a>
-  <a href="#" ng-click="main.logout()">Logout</a>
+    <h3></h3>
+    <a href="#" ui-sref="home.cards" ui-sref-active="active" ng-push-menu="menu">Find Matches</a>
+    <a href="#" ui-sref="home.guardians" ui-sref-active="active" ng-push-menu="menu">Your Guardians</a>
+    <a href="#" ui-sref="home.matches" ui-sref-active="active" ng-push-menu="menu">Matched Guardians</a>
+    <a href="#" ui-sref="home.favorites" ui-sref-active="active" ng-push-menu="menu">Favorite Guardians</a>
+    <a href="#" ui-sref="home.donate" ui-sref-active="active" ng-push-menu="menu">Donate</a>
+    <a href="#" ui-sref="home.account" ui-sref-active="active" ng-push-menu="menu">Account</a>
+    <a href="#" ng-click="main.logout()">Logout</a>
 </ng-slide-push-menu>
 
 <nav class="navbar navbar-static-top">
-  <div class="container-fluid">
-    <div class="navbar-header" ng-push-menu="menu">
-      <a class="navbar-brand">
-        <i class="icon-menu"></i>
-      </a>
-        <a class="navbar-brand">{{vm.title}}</a>
-    </div>
+    <div class="container-fluid">
+        <div class="navbar-header" ng-push-menu="menu">
+            <a class="navbar-brand">
+                <i class="icon-menu"></i>
+            </a>
+            <a class="navbar-brand">{{vm.title}}</a>
+        </div>
 
-<!--
+        <!--
     <div class="navbar-collapse" id="bs-example-navbar-collapse-6" ng-class="{'collapse': vm.navbarCollapsed}">
       <ul class="nav navbar-nav">
         <li class="active"><a ng-href="#">Home</a></li>
@@ -26,5 +27,5 @@
       </ul>
     </div>
 -->
-  </div>
+    </div>
 </nav>
