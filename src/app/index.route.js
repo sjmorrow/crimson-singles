@@ -41,7 +41,12 @@
                 url: '/guardians',
                 templateUrl: 'app/guardians/guardians.html',
                 controller: 'GuardiansController',
-                controllerAs: 'guardians'
+                controllerAs: 'guardians',
+                resolve: {
+                    "currentAuth": ["FBAuth", function (FBAuth) {
+                        return FBAuth.$requireAuth();
+                    }]
+                }
             })
             .state('home.matches', {
                 url: '/matches',

@@ -1,1 +1,19 @@
-<h2>Guardians</h2>
+<h2>Your Guardians</h2>
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="guardian in guardians.guardians">
+        <div class="my-guardian">
+            <div class="class-selector"></div>
+            <div class="platform-selector"></div>
+            <div class="light-level-input"></div>
+            <div class="bio-input">
+                <textarea ng-model="guardian.bio" maxlength="140"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-accent btn-lg btn-block" ng-click="guardians.addGuardian()">Add Guardian <i class="icon-add-user"></i></button>
+        <br /><br />
+    </div>
+</div>
