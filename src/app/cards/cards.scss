@@ -129,7 +129,7 @@ ul[swing-stack] {
         cursor: pointer;        
         transition: background-color 0.15s ease-in-out;
         user-select: none;
-        
+        background: white;
         &:active {
             background-color: #E6E6E6;
             
