@@ -4,8 +4,8 @@
             No more Guardians
         </li>
         <li swing-card ng-repeat="guardian in cards.firebase.guardians" 
-            swing-on-throwoutleft="cards.swipeLeft(eventObject)"
-            swing-on-throwoutright="cards.swipeRight(eventObject)">
+            swing-on-throwoutleft="cards.swipeLeft(guardian)"
+            swing-on-throwoutright="cards.swipeRight(guardian)">
             <div class="class-image" style="background-image: url(../../assets/images/{{guardian.preferred_subclass}}.jpg);">
             </div>
             <div class="info">
@@ -22,7 +22,7 @@
     <div class="controls">
         <div class="control inline" ng-click="cards.refresh()"><i class="icon-ccw"></i></div>
         <div class="control large inline" ng-click="cards.swipeLeft()"><i class="icon-cross"></i></div>
-        <div class="control large inline" ng-click="cards.swipeRight()"><i class="icon-heart"></i></div>
+        <div class="control large inline" ng-click="cards.swipeRight($guardians.last())"><i class="icon-heart"></i></div>
         <div class="control inline" ng-click="cards.favorite()"><i class="icon-star"></i></div>
     </div>
 </div>
