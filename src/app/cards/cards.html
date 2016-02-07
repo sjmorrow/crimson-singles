@@ -1,14 +1,26 @@
-<ul class="stack" swing-stack>
-    <li class="empty-stack">
-        No more Guardians
-    </li>
-    <li swing-card ng-repeat="guardian in main.firebase.guardians">
-        <div class="class-image" style="background-image: url(../../assets/images/{{guardian.preferred_subclass}}.jpg);">
-        </div>
-        <div class="info">
-            <h3 class="gamertag">{{guardian.gamertag}}</h3>
-            <h4 class="light-level">{{guardian.level}}</h4>
-            <h5>"{{guardian.bio}}"</h5>
-        </div>
-    </li>
-</ul>
+<div class="vertical-container">
+    <ul class="stack" swing-stack>
+        <li class="empty-stack">
+            No more Guardians
+        </li>
+        <li swing-card ng-repeat="guardian in main.firebase.guardians">
+            <div class="class-image" style="background-image: url(../../assets/images/{{guardian.preferred_subclass}}.jpg);">
+            </div>
+            <div class="info">
+                <h3 class="gamertag">{{guardian.gamertag}}</h3>
+                <div>
+                    <h4 class="light-level  inline">{{guardian.level}}</h4>
+                    <h4 class="class inline">{{guardian.class}}</h4>
+                </div>            
+                <h5>"{{guardian.bio}}"</h5>
+            </div>        
+        </li>
+    </ul>
+
+    <div class="controls">
+        <div class="control inline"><i class="icon-ccw"></i></div>
+        <div class="control large inline"><i class="icon-cross"></i></div>
+        <div class="control large inline"><i class="icon-heart"></i></div>
+        <div class="control inline"><i class="icon-star"></i></div>
+    </div>
+</div>

@@ -1,15 +1,26 @@
+.inline {
+    display: inline-block;
+}
+
+.vertical-container {
+    height: calc(100% - 50px);
+}
+
+
 ul[swing-stack] {
-    height: 100%;
+    height: 60%;
     position: absolute;
     overflow: hidden;
-    top: 0;
+    top: 50px;
     bottom: 0;
     left: 0;
     right: 0;
     padding-left: 0;
+    padding-top: 15px;
+    margin-bottom: 0;
+    max-width: 500px;
     
-    @media screen and (min-width: $mobile-break) {
-        width: 500px;
+    @include respond-to(card-max) {
         left: calc(50% - 250px);
     }
     
@@ -17,12 +28,11 @@ ul[swing-stack] {
         width: calc(100% - 30px);
         margin-left: 15px;
         margin-right: 15px;
-        height: 350px;
+        height: 90%;
         list-style: none;
         background: #fff;
         border-radius: 5px;
         position: absolute;
-        //left: calc(50% - 100px);
         box-shadow: 0 0 2px rgba(0, 0, 0, .2), 1px 1px 1px rgba(0, 0, 0, .2);
         text-align: center;
         border: 3px solid $medium-color;
@@ -55,7 +65,7 @@ ul[swing-stack] {
         }
 
         .class-image {
-            height: 200px;
+            height: 180px;
             background-size: cover;
             border-top-left-radius: 3px;
             border-top-right-radius: 3px;
@@ -63,9 +73,7 @@ ul[swing-stack] {
         }
 
         .info {
-            padding: 5px;
-
-
+            padding: 5px;           
         }
 
         .gamertag {
@@ -74,9 +82,108 @@ ul[swing-stack] {
 
         .light-level {
             color: $light-level-color;
-
+            font-weight: 300;
+            margin-right: 5px;
+            
             &:before {
                 content: "\2726";
+            }
+        }
+    }
+}
+
+.controls {
+    position: absolute;
+    bottom: 5px;
+    width: 290px;
+    height: calc(40% - 50px);
+    left: calc(50% - 145px);
+    bottom: -5%;
+    
+    @include respond-to(extra-small) {
+        width: 390px;
+        left: calc(50% - 195px);
+    }
+    
+    .control {
+        border-radius: 50%;
+        border: 10px solid #CCCCCC;
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        position: relative;
+        top: -40px;
+        margin-right: -12px;  
+        text-align: center;
+        
+        @include respond-to(extra-small) {
+            top: -45px;
+            height: 80px;
+            width: 80px;
+        }
+        
+        &.large {
+            width: 100px;
+            height: 100px;
+            top: 0;
+            
+            @include respond-to(extra-small) {
+                width: 125px;
+                height: 125px;
+            }
+            
+            i {
+                font-size: 46px;
+                
+                @include respond-to(extra-small) {
+                    font-size: 58px;
+                }
+            }
+        }
+        
+        i {          
+            position: absolute;
+            
+            &.icon-ccw {
+                left: 5px;
+                top: 6px;
+                color: #F2D349;
+            }
+            &.icon-cross {
+                left: 17px;
+                top: 17px;
+                color: $accent-color;
+            }
+            &.icon-heart {
+                left: 17px;
+                top: 18px;
+                color: #03A173;
+            }
+            &.icon-star {
+                left: 6px;
+                top: 6px;
+                color: #1C7CED;
+            } 
+            
+            @include respond-to(extra-small) {
+                font-size: 40px;
+                
+                &.icon-ccw {
+                    left: 8px;
+                    top: 11px;                    
+                }
+                &.icon-cross {
+                    left: 23px;
+                    top: 23px;
+                }
+                &.icon-heart {
+                    left: 24px;
+                    top: 26px;
+                }
+                &.icon-star {
+                    left: 10px;
+                    top: 10px;
+                }  
             }
         }
     }
