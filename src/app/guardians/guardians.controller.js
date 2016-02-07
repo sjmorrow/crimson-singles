@@ -6,7 +6,7 @@
         .controller('GuardiansController', GuardiansController);
 
     /** @ngInject */
-    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth) {
+    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal) {
         var vm = this;
         var fbRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid + '/guardians');
         vm.guardians = $firebaseArray(fbRef);
@@ -29,6 +29,40 @@
         vm.selectPlatform = function(key, platform) {
             vm.guardians[key].platform = platform;
             vm.guardians.$save(key);
+        };
+        vm.activateGuardian = function(key) {
+            $uibModal.open({
+                templateUrl: 'app/guardians/activate-guardian.modal.html',
+                resolve: {
+                    guardian: vm.guardians[key]
+                },
+                controller: /**ngInject*/ function(guardian, activationLengths) {
+                    var vm = this;
+                    vm.guardian = guardian;
+                    vm.activationLengths = activationLengths;
+                    vm.selectedLength = '5';
+                    switch(guardian.class) {
+                        case 'TITAN':
+                            vm.class = 'Titan';
+                            break;
+                        case 'HUNTER':
+                            vm.class = 'Hunter';
+                            break;
+                        case 'WARLOCK':
+                            vm.class = 'Warlock';
+                            break;
+                    }
+                },
+                controllerAs: 'modal'
+            }).result.then(function(guardian, selectedLength) {
+                guardian.expiresOn = moment().add(selectedLength, 'minutes').format();
+                //TODO: Add to global active_guardians list
+                //TODO: Disable activate guardian buttons
+                //TODO: Direct to home.cards
+                vm.guardians.$save(key);
+            }).catch(function() {
+                
+            });
         };
     }
 })();

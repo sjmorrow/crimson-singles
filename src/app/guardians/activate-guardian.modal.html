@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h3 class="modal-title">Activating Level {{modal.guardian.level}} {{modal.class}}</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-xs-12">
+            <p>You are about to activate this guardian. Please select the amount of time you would like this guardian to be active.</p>
+            <select class="form-control" ng-options="minutes as text for (minutes, text) in modal.activationLengths" ng-model="modal.selectedLength">
+            </select>
+            <br />
+            <p>While the guardian is active, he/she will show up to other user's as potential matches. You will not be able to activate another guardian until this one has expired.</p>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-light" type="button" ng-click="$dismiss()">Cancel</button>
+    <button class="btn btn-accent" type="button" ng-click="$close(modal.guardian, modal.selectedLength)">Activate</button>
+</div>

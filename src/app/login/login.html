@@ -13,8 +13,8 @@
                 <label>Password <span class="pull-right"><a href="" ui-sref="forgot">Forgot Password?</a></span></label>
                 <input type="password" ng-model="login.password">
                 <label></label>
-                <button class="btn btn-accent btn-block" type="submit" ng-click="login.performLogin()">Login</button>
-                <button class="btn btn-light btn-block" type="submit" ng-click="login.registerUser()">Register</button>
+                <button class="btn btn-accent btn-block" type="submit" ng-click="login.performLogin()" ladda="login.loadingLogin">Login</button>
+                <button class="btn btn-light btn-block" type="submit" ng-click="login.registerUser()" ladda="login.loadingRegister">Register</button>
             </form>
         </div>
     </div>
