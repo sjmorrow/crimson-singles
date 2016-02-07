@@ -65,7 +65,7 @@ ul[swing-stack] {
         }
 
         .class-image {
-            height: 180px;
+            height: 45%;
             background-size: cover;
             border-top-left-radius: 3px;
             border-top-right-radius: 3px;
@@ -84,10 +84,21 @@ ul[swing-stack] {
             color: $light-level-color;
             font-weight: 300;
             margin-right: 5px;
+            margin-top: -10px;
+            margin-bottom: -10px;
             
             &:before {
-                content: "\2726";
+                content: '\2726';
             }
+        }
+        
+        .light-level, .class {
+            margin-top: -10px;
+            margin-bottom: -10px;
+        }
+        
+        .class {
+            font-weight: 700;
         }
     }
 }
@@ -116,7 +127,7 @@ ul[swing-stack] {
         margin-right: -12px;  
         text-align: center;
         cursor: pointer;        
-        transition: all 0.15s ease-in-out;
+        transition: background-color 0.15s ease-in-out;
         user-select: none;
         
         &:active {
