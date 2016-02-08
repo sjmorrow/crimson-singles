@@ -15,20 +15,20 @@
             filter: saturate(0);
             &.titan {
                 transform-origin: left center 0;
-                background: url(../../assets/images/sunbreaker.jpg);
+                background: url(../../assets/images/TITAN.jpg);
                 background-repeat: no-repeat;
                 background-size: auto 100%;
                 background-position: center top;
             }
             &.hunter {
-                background: url(../../assets/images/nightstalker.jpg);
+                background: url(../../assets/images/HUNTER.jpg);
                 background-repeat: no-repeat;
                 background-size: auto 100%;
                 background-position: center top;
             }
             &.warlock {
                 transform-origin: right center 0;
-                background: url(../../assets/images/stormcaller.jpg);
+                background: url(../../assets/images/WARLOCK.jpg);
                 background-repeat: no-repeat;
                 background-size: auto 100%;
                 background-position: center top;

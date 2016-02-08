@@ -14,9 +14,16 @@
 
 
         vm.checkForActiveGuardian = function() {
-            var expireDate = moment(activeGuardians[userProfile.activeGuardianId]);
-            if (expireDate.diff(moment(), 'seconds') > 0) {
-                //Guardian has expired. Allow user to activate a new one
+            var activeGuardian = vm.guardians[userProfile.activeGuardianId];
+            if(activeGuardian && activeGuardian.hasOwnProperty('expiresOn')) {
+                var expireDate = moment(vm.guardians[userProfile.activeGuardianId].expiresOn);
+                if (expireDate.diff(moment(), 'seconds') < 0) {
+                    //Guardian has expired. Allow user to activate a new one
+                    vm.userProfile.activeGuardianId = null;
+                    vm.userProfile.$save();
+                }
+            } else {
+                // No active guardian, make sure field is cleared
                 vm.userProfile.activeGuardianId = null;
                 vm.userProfile.$save();
             }
@@ -69,8 +76,10 @@
                     }
                 },
                 controllerAs: 'modal'
-            }).result.then(function(guardian, selectedLength) {
-                guardian.expiresOn = moment().add(selectedLength, 'minutes').format();
+            }).result.then(function(modal) {
+                var guardian = modal.guardian;
+                var selectedLength = modal.selectedLength;
+                guardian.expiresOn = moment().add(parseInt(selectedLength), 'minutes').format();
                 var activeGuardian = {
                     networkId: ''
                 };
