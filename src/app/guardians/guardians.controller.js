@@ -6,7 +6,7 @@
         .controller('GuardiansController', GuardiansController);
 
     /** @ngInject */
-    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal) {
+    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal, activeGuardians) {
         var vm = this;
         var fbRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid + '/guardians');
         vm.guardians = $firebaseArray(fbRef);
@@ -56,6 +56,7 @@
                 controllerAs: 'modal'
             }).result.then(function(guardian, selectedLength) {
                 guardian.expiresOn = moment().add(selectedLength, 'minutes').format();
+                activeGuardians.$add(guardian);
                 //TODO: Add to global active_guardians list
                 //TODO: Disable activate guardian buttons
                 //TODO: Direct to home.cards

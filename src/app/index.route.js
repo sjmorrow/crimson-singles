@@ -28,6 +28,16 @@
                 resolve: {
                     "currentAuth": ["FBAuth", function (FBAuth) {
                         return FBAuth.$requireAuth();
+                    }],
+                    "userProfile": ['FBAuth', '$q', 'FIREBASE_URL', '$firebaseObject', function(FBAuth, $q, FIREBASE_URL, $firebaseObject) {
+                        var deferred = $q.defer();
+                        FBAuth.$requireAuth().then(function(authData) {
+                            var fbRef = new Firebase(FIREBASE_URL + '/users/' + authData.uid);
+                            deferred.resolve($firebaseObject(fbRef));
+                        }).catch(function(error) {
+                            deferred.reject(error);
+                        });
+                        return deferred.promise;
                     }]
                 }
             })
