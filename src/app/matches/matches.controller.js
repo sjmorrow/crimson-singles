@@ -10,7 +10,6 @@
         var vm = this;
         
         var matchedGuardiansRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid + '/matched_guardians');
-        vm.matchedGuardians = $firebaseArray(matchedGuardiansRef)
-        
+        vm.matchedGuardians = $firebaseArray(matchedGuardiansRef)        
     }
 })();

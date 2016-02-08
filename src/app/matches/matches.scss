@@ -1,9 +1,23 @@
 .match {
     margin-bottom: 15px;   
     height: 200px;
+    transition: height .2s ease-in-out;
+    cursor: pointer;
     
     @include respond-to(extra-small) {
         height: 150px;
+        
+        &.expanded {
+            height: 200px;
+        }
+    }
+    
+    &.expanded {
+        height: 250px;  
+        
+        .actions {
+            display: block
+        }
     }
     
     .class-image {
@@ -37,5 +51,14 @@
         .light-level {
             margin-right: 5px;            
         }
-    }   
+    } 
+    
+    .actions {
+        border-top: 3px solid $medium-color;
+        display: none;
+        padding: 10px;
+        clear: right;
+        float: right;
+        width: 75%;
+    }
 }
