@@ -8,6 +8,9 @@
             <select class="form-control" ng-options="minutes as text for (minutes, text) in modal.activationLengths" ng-model="modal.selectedLength">
             </select>
             <br />
+            <p>Please select the game mode you participating in.</p>
+            <select class="form-control" ng-options="mode.$id as mode.$value for mode in modal.gameModes" ng-model="modal.selectedGameMode"></select>
+            <br />
             <p>While the guardian is active, he/she will show up to other user's as potential matches. You will not be able to activate another guardian until this one has expired.</p>
         </div>
     </div>

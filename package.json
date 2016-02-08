@@ -1,7 +1,10 @@
 {
   "name": "crimsonSingles",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "firebase": "^2.4.0",
+    "moment": "^2.11.2"
+  },
   "scripts": {
     "test": "gulp test"
   },

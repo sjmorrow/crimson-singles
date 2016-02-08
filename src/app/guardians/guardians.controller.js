@@ -58,11 +58,13 @@
                 resolve: {
                     guardian: vm.guardians[key]
                 },
-                controller: /**ngInject*/ function(guardian, activationLengths) {
+                controller: /**ngInject*/ function(guardian, activationLengths, gameModes) {
                     var vm = this;
                     vm.guardian = guardian;
                     vm.activationLengths = activationLengths;
+                    vm.gameModes = gameModes;
                     vm.selectedLength = '5';
+                    vm.selectedGameMode = 'CRIMSON_PVP';
                     switch(guardian.class) {
                         case 'TITAN':
                             vm.class = 'Titan';
@@ -79,9 +81,11 @@
             }).result.then(function(modal) {
                 var guardian = modal.guardian;
                 var selectedLength = modal.selectedLength;
+                var selectedGameMode = modal.selectedGameMode;
                 guardian.expiresOn = moment().add(parseInt(selectedLength), 'minutes').format();
                 var activeGuardian = {
-                    networkId: ''
+                    networkId: '',
+                    event_code: selectedGameMode
                 };
                 if (guardian.platform == 'XBOX') {
                     activeGuardian.networkId = userProfile.XBL_ID;
