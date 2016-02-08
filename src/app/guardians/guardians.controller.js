@@ -6,10 +6,25 @@
         .controller('GuardiansController', GuardiansController);
 
     /** @ngInject */
-    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal, activeGuardians) {
+    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal, activeGuardians, userProfile) {
         var vm = this;
+
         var fbRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid + '/guardians');
         vm.guardians = $firebaseArray(fbRef);
+
+
+        vm.checkForActiveGuardian = function() {
+            var expireDate = moment(activeGuardians[userProfile.activeGuardianId]);
+            if (expireDate.diff(moment(), 'seconds') > 0) {
+                //Guardian has expired. Allow user to activate a new one
+                vm.userProfile.activeGuardianId = null;
+                vm.userProfile.$save();
+            }
+        };
+
+        vm.userProfile = userProfile;
+        vm.userProfile.$loaded(vm.checkForActiveGuardian);
+
         vm.updateGuardian = function(key) {
             vm.guardians.$save(key);
         };
@@ -56,9 +71,18 @@
                 controllerAs: 'modal'
             }).result.then(function(guardian, selectedLength) {
                 guardian.expiresOn = moment().add(selectedLength, 'minutes').format();
-                activeGuardians.$add(guardian);
-                //TODO: Add to global active_guardians list
-                //TODO: Disable activate guardian buttons
+                var activeGuardian = {
+                    networkId: ''
+                };
+                if (guardian.platform == 'XBOX') {
+                    activeGuardian.networkId = userProfile.XBL_ID;
+                } else if (guardian.platform == 'PSN') {
+                    activeGuardian.networkId = userProfile.PSN_ID;
+                }
+                angular.extend(activeGuardian, guardian);
+                activeGuardians.$add(activeGuardian);
+                vm.userProfile.activeGuardianId = key;
+                vm.userProfile.$save();
                 //TODO: Direct to home.cards
                 vm.guardians.$save(key);
             }).catch(function() {
