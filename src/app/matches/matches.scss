@@ -1,0 +1,41 @@
+.match {
+    margin-bottom: 15px;   
+    height: 200px;
+    
+    @include respond-to(extra-small) {
+        height: 150px;
+    }
+    
+    .class-image {
+        width: 25%;
+        height: 100%;
+        float: left;
+        background-size: cover;
+        background-position-x: -40px;
+        border-right: 3px solid $medium-color;
+    }
+    
+    .info {
+        width: 75%;
+        padding: 10px;
+        float: right;
+        
+        h3 {
+            margin-top: 0;
+            font-size: 20px;
+            
+            @include respond-to(extra-small) {
+                font-size: 24px;
+            }
+        }
+        
+        h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        
+        .light-level {
+            margin-right: 5px;            
+        }
+    }   
+}
