@@ -5,7 +5,7 @@
         </li>
         <li swing-card ng-repeat="guardian in cards.activeGuardians" 
             swing-on-throwoutleft="cards.activeGuardians.pop()"
-            swing-on-throwoutright="cards.swipeRight(guardian)">
+            swing-on-throwoutright="cards.matchedGuardians.$add(cards.activeGuardians.pop())">
             <div class="class-image" style="background-image: url(../../assets/images/{{guardian.preferred_subclass}}.jpg);">
             </div>
             <div class="info">
@@ -22,7 +22,7 @@
     <div class="controls">
         <div class="control inline" ng-click="cards.refresh()"><i class="icon-ccw"></i></div>
         <div class="control large inline" ng-click="cards.activeGuardians.pop()"><i class="icon-cross"></i></div>
-        <div class="control large inline" ng-click="cards.swipeRight(cards.activeGuardians.last())"><i class="icon-heart"></i></div>
-        <div class="control inline" ng-click="cards.favorite()"><i class="icon-star"></i></div>
+        <div class="control large inline" ng-click="cards.matchedGuardians.$add(cards.activeGuardians.pop())"><i class="icon-heart"></i></div>
+        <div class="control inline" ng-click="cards.favoriteGuardians.$add(cards.activeGuardians.pop())"><i class="icon-star"></i></div>
     </div>
 </div>
