@@ -27,7 +27,7 @@
                 if (authData.password.isTemporaryPassword) {
                     $state.go('home.account');
                 } else {
-                    $state.go('home.cards');
+                    $state.go('home');
                 }
             }).catch(function () {
                 $uibModal.open({
