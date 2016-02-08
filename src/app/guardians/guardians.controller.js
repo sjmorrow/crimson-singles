@@ -14,9 +14,9 @@
 
 
         vm.checkForActiveGuardian = function() {
-            var activeGuardian = vm.guardians[userProfile.activeGuardianId];
+            var activeGuardian = vm.guardians.$getRecord(userProfile.activeGuardianId);
             if(activeGuardian && activeGuardian.hasOwnProperty('expiresOn')) {
-                var expireDate = moment(vm.guardians[userProfile.activeGuardianId].expiresOn);
+                var expireDate = moment(activeGuardian.expiresOn);
                 if (expireDate.diff(moment(), 'seconds') < 0) {
                     //Guardian has expired. Allow user to activate a new one
                     vm.userProfile.activeGuardianId = null;
@@ -90,7 +90,7 @@
                 }
                 angular.extend(activeGuardian, guardian);
                 activeGuardians.$add(activeGuardian);
-                vm.userProfile.activeGuardianId = key;
+                vm.userProfile.activeGuardianId = vm.guardians.$keyAt(key);
                 vm.userProfile.$save();
                 //TODO: Direct to home.cards
                 vm.guardians.$save(key);
