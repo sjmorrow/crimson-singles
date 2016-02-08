@@ -6,10 +6,9 @@
         .controller('AccountController', AccountController);
 
     /** @ngInject */
-    function AccountController(FBAuth, $uibModal, $log, currentAuth, FIREBASE_URL, $firebaseObject, $scope) {
+    function AccountController(FBAuth, $uibModal, $log, $scope, userProfile) {
         var vm = this;
-        var fbRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid);
-        $firebaseObject(fbRef).$bindTo($scope, 'profile');
+        userProfile.$bindTo($scope, 'profile');
         vm.saveNetworkIds = function() {
             
         };

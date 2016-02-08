@@ -21,7 +21,7 @@
                 controllerAs: 'forgot'
             })
             .state('home', {
-                url: '',
+                url: '/',
                 templateUrl: 'app/main/main.html',
                 controller: 'MainController',
                 controllerAs: 'main',

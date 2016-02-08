@@ -63,7 +63,7 @@
                     vm.guardian = guardian;
                     vm.activationLengths = activationLengths;
                     vm.gameModes = gameModes;
-                    vm.selectedLength = '5';
+                    vm.selectedLength = '3';
                     vm.selectedGameMode = 'CRIMSON_PVP';
                     switch(guardian.class) {
                         case 'TITAN':

@@ -1,0 +1,33 @@
+.guardian-list {
+    .guardian {
+        font-size: 25px;
+        &.active {
+            transform: scale(1.5);
+        }
+        .light-level {
+            color: $light-level-color;
+            font-weight: 300;
+            font-size: 25px;
+            &:before {
+                content: '\2726';
+            }
+        }
+        .platform {
+            height: 100%;
+            width: 30px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: auto 70%;
+            &.XBOX {
+                background-image: url(../../../assets/images/xbox-logo.png);
+            }
+            &.PSN {
+                background-image: url(../../../assets/images/psn-logo.png);
+            }
+        }
+        .bio {
+            font-size: 12px;
+        }
+    }
+}

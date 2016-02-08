@@ -4,10 +4,55 @@
         <navbar></navbar>
     </div>
     <div class="body-content" ui-view>
-        <h4>TODO</h4>
-        <ol>
-            <li>If user has guardians on profile, direct them to select which one they would like to start match making with</li>
-            <li>If user does NOT have guardians on profile, direct them to "Your Guardians" screen to add one</li>
-        </ol>
+        <div class="row" ng-if="main.requiresNetworkId">
+            <div class="col-xs-12">
+                <div class="well">
+                    <h2>Gamertag / PSN ID</h2>
+                    <form class="form crimson-form">
+                        <div class="form-group">
+                            <label>XBL Gamertag:</label>
+                            <input type="text" class="form-control" ng-model="profile.XBL_ID">
+                        </div>
+                        <div class="form-group">
+                            <label>PSN ID:</label>
+                            <input type="text" class="form-control" ng-model="profile.PSN_ID">
+                        </div>
+                        <button type="button" class="btn btn-light btn-lg" ng-click="main.hideNetworkIdInput()">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="main.needsToCreateGuardian">
+            <div class="col-xs-12">
+                <p>
+                    Thanks for trying out Crimson Singles! Now that you have an account, you need to setup your guardians. 
+                    When you are ready to being matchmaking, you can "activate" one of your guardians for a set amount of time. 
+                    You will not be able to view matches until you have an active guardian for other users to view.
+                </p>
+                <button class="btn btn-accent btn-block btn-lg" ui-sref="home.guardians">Go Create a Guardian <i class="icon-add-user"></i></button>
+            </div>
+        </div>
+        <div class="row" ng-if="main.guardianExpireTime">
+            <div class="col-xs-12 center-text">
+                You currently have a guardian activated in matchmaking. It will expire {{main.guardianExpireTime}}.
+            </div>
+        </div>
+        <div class="row guardian-list">
+            <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="guardian in main.userProfile.guardians" ng-class="{'active': guardian.isActive}">
+                <div class="guardian well">
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <span class="light-level">{{guardian.level}}</span>
+                            <span class="class">{{guardian.class}}</span>
+                            <span class="platform" ng-class="guardian.platform">&nbsp;</span>
+                            <p class="bio">{{guardian.bio}}</p>
+                        </div>
+                        <div class="col-xs-4 activate-container">
+                            <button class="btn btn-accent btn-sm pull-right" ng-click="main.activateGuardian(guardian)" ng-disabled="main.hasActiveGuardian">Activate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
