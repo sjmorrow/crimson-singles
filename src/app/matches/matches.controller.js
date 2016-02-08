@@ -6,7 +6,11 @@
         .controller('MatchesController', MatchesController);
 
     /** @ngInject */
-    function MatchesController() {
-        //var vm = this;
+    function MatchesController(FIREBASE_URL, $firebaseArray, currentAuth, $log) {
+        var vm = this;
+        
+        var matchedGuardiansRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid + '/matched_guardians');
+        vm.matchedGuardians = $firebaseArray(matchedGuardiansRef)
+        
     }
 })();

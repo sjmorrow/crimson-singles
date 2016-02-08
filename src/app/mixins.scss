@@ -4,6 +4,22 @@
     transform: translateY(-50%);
 }
 
+.light-level {
+    color: $light-level-color;
+    font-weight: 300;
+    
+    &:before {
+        content: '\2726';
+    }
+}
+
+.card {
+    background: $dark-color;
+    color: white;
+    border-radius: 5px;
+    border: 3px solid $medium-color;
+}
+
 $breakpoints: ( 
     'extra-small': ( min-width: 413px ),
     'card-max' : ( min-width: 500px ),
