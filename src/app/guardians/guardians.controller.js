@@ -6,7 +6,7 @@
         .controller('GuardiansController', GuardiansController);
 
     /** @ngInject */
-    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal, activeGuardians, userProfile) {
+    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal, activeGuardians, userProfile, activateGuardian) {
         var vm = this;
 
         var fbRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid + '/guardians');
@@ -53,54 +53,7 @@
             vm.guardians.$save(key);
         };
         vm.activateGuardian = function(key) {
-            $uibModal.open({
-                templateUrl: 'app/guardians/activate-guardian.modal.html',
-                resolve: {
-                    guardian: vm.guardians[key]
-                },
-                controller: /**ngInject*/ function(guardian, activationLengths, gameModes) {
-                    var vm = this;
-                    vm.guardian = guardian;
-                    vm.activationLengths = activationLengths;
-                    vm.gameModes = gameModes;
-                    vm.selectedLength = '3';
-                    vm.selectedGameMode = 'CRIMSON_PVP';
-                    switch(guardian.class) {
-                        case 'TITAN':
-                            vm.class = 'Titan';
-                            break;
-                        case 'HUNTER':
-                            vm.class = 'Hunter';
-                            break;
-                        case 'WARLOCK':
-                            vm.class = 'Warlock';
-                            break;
-                    }
-                },
-                controllerAs: 'modal'
-            }).result.then(function(modal) {
-                var guardian = modal.guardian;
-                var selectedLength = modal.selectedLength;
-                var selectedGameMode = modal.selectedGameMode;
-                guardian.expiresOn = moment().add(parseInt(selectedLength), 'minutes').format();
-                var activeGuardian = {
-                    networkId: '',
-                    event_code: selectedGameMode
-                };
-                if (guardian.platform == 'XBOX') {
-                    activeGuardian.networkId = userProfile.XBL_ID;
-                } else if (guardian.platform == 'PSN') {
-                    activeGuardian.networkId = userProfile.PSN_ID;
-                }
-                angular.extend(activeGuardian, guardian);
-                activeGuardians.$add(activeGuardian);
-                vm.userProfile.activeGuardianId = vm.guardians.$keyAt(key);
-                vm.userProfile.$save();
-                //TODO: Direct to home.cards
-                vm.guardians.$save(key);
-            }).catch(function() {
-                
-            });
+            activateGuardian(vm.guardians[key]);
         };
     }
 })();
