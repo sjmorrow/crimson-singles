@@ -36,13 +36,17 @@
             vm.guardians.$save(key);
         };
         vm.addGuardian = function() {
-            vm.guardians.$add({
-                preferred_subclass: '',
-                platform: '',
-                level: 0,
-                class: '',
-                bio: ''
-            });
+            if(vm.guardians.length === 6) {
+                alert('I dont think you really need more than 6 guardians, do you?');
+            } else {
+                vm.guardians.$add({
+                    preferred_subclass: '',
+                    platform: '',
+                    level: 0,
+                    class: '',
+                    bio: ''
+                });
+            }
         };
         vm.selectClass = function(key, clazz) {
             vm.guardians[key].class = clazz;
