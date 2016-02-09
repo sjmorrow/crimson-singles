@@ -42,37 +42,37 @@
                 }
             })
             .state('home.cards', {
-                url: '/cards',
+                url: 'cards',
                 templateUrl: 'app/cards/cards.html',
                 controller: 'CardsController',
                 controllerAs: 'cards'
             })
             .state('home.guardians', {
-                url: '/guardians',
+                url: 'guardians',
                 templateUrl: 'app/guardians/guardians.html',
                 controller: 'GuardiansController',
                 controllerAs: 'guardians'
             })
             .state('home.matches', {
-                url: '/matches',
+                url: 'matches',
                 templateUrl: 'app/matches/matches.html',
                 controller: 'MatchesController',
                 controllerAs: 'matches'
             })
             .state('home.favorites', {
-                url: '/favorites',
+                url: 'favorites',
                 templateUrl: 'app/favorites/favorites.html',
                 controller: 'FavoritesController',
                 controllerAs: 'favorites'
             })
             .state('home.donate', {
-                url: '/donate',
+                url: 'donate',
                 templateUrl: 'app/donate/donate.html',
                 controller: 'DonateController',
                 controllerAs: 'donate'
             })
             .state('home.account', {
-                url: '/account',
+                url: 'account',
                 templateUrl: 'app/account/account.html',
                 controller: 'AccountController',
                 controllerAs: 'account'
