@@ -21,11 +21,7 @@
     </ul>
 
     <div class="controls">
-        <div style="display: none;">
-            <div class="pull-left">Swipe left to hide </div>
-            <div class="pull-right">Swipe right to like</div>
-        </div>
-        
+        <div class="instructions">Swipe left to hide, swipe right to like</div>        
         <div class="control inline" ng-click="cards.refresh()"><i class="icon-ccw"></i></div>
         <div class="control large inline" ng-click="cards.dequeue()"><i class="icon-cross"></i></div>
         <div class="control large inline" ng-click="cards.matchedGuardians.$add(cards.dequeue())"><i class="icon-heart"></i></div>
