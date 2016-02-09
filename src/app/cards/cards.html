@@ -3,10 +3,10 @@
         <li class="empty-stack">
             No more Guardians
         </li>
-        <li swing-card ng-repeat="guardian in cards.activeGuardians" 
-            ng-if="(cards.currentUser.XBL_ID != guardian.networkId && guardian.platform == 'XBOX') || (cards.currentUser.PSN_ID != guardian.networkId && guardian.platform == 'PSN')"
-            swing-on-throwoutleft="cards.activeGuardians.pop()"
-            swing-on-throwoutright="cards.matchedGuardians.$add(cards.activeGuardians.pop())">
+        <li swing-card ng-repeat="guardian in cards.activeGuardians | orderBy:'activatedOn':true" 
+            ng-if="cards.showInStack(guardian)"
+            swing-on-throwoutleft="cards.dequeue()"
+            swing-on-throwoutright="cards.matchedGuardians.$add(cards.dequeue())">
             <div class="class-image" style="background-image: url(../../assets/images/{{guardian.class}}.jpg);">
             </div>
             <div class="info">
@@ -21,9 +21,14 @@
     </ul>
 
     <div class="controls">
+        <div style="display: none;">
+            <div class="pull-left">Swipe left to hide </div>
+            <div class="pull-right">Swipe right to like</div>
+        </div>
+        
         <div class="control inline" ng-click="cards.refresh()"><i class="icon-ccw"></i></div>
-        <div class="control large inline" ng-click="cards.activeGuardians.pop()"><i class="icon-cross"></i></div>
-        <div class="control large inline" ng-click="cards.matchedGuardians.$add(cards.activeGuardians.pop())"><i class="icon-heart"></i></div>
-        <div class="control inline" ng-click="cards.favoriteGuardians.$add(cards.activeGuardians.pop())"><i class="icon-star"></i></div>
+        <div class="control large inline" ng-click="cards.dequeue()"><i class="icon-cross"></i></div>
+        <div class="control large inline" ng-click="cards.matchedGuardians.$add(cards.dequeue())"><i class="icon-heart"></i></div>
+        <div class="control inline" ng-click="cards.favoriteGuardians.$add(cards.dequeue())"><i class="icon-star"></i></div>
     </div>
 </div>
