@@ -9,7 +9,10 @@
     function CardsController(FIREBASE_URL, $firebaseObject, 
                               $firebaseArray, $log, currentAuth, activeGuardians) {
         var vm = this;
-        vm.activeGuardians = activeGuardians;      
+        vm.activeGuardians = activeGuardians;
+        
+        var currentUserRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid)
+        vm.currentUser = $firebaseObject(currentUserRef)
         
         var matchedGuardiansRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid + '/matched_guardians');
         vm.matchedGuardians = $firebaseArray(matchedGuardiansRef)
