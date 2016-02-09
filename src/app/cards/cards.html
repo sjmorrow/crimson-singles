@@ -4,6 +4,7 @@
             No more Guardians
         </li>
         <li swing-card ng-repeat="guardian in cards.activeGuardians" 
+            ng-if="(cards.currentUser.XBL_ID != guardian.networkId && guardian.platform == 'XBOX') || (cards.currentUser.PSN_ID != guardian.networkId && guardian.platform == 'PSN')"
             swing-on-throwoutleft="cards.activeGuardians.pop()"
             swing-on-throwoutright="cards.matchedGuardians.$add(cards.activeGuardians.pop())">
             <div class="class-image" style="background-image: url(../../assets/images/{{guardian.class}}.jpg);">

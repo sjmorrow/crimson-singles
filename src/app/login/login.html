@@ -9,12 +9,12 @@
         <div class="col-md-offset-4 col-xs-12 col-md-4">
             <form class="form login-form">
                 <label>Email</label>
-                <input type="email" ng-model="login.email">
+                <input type="email" ng-model="login.email" tabindex="1">
                 <label>Password <span class="pull-right"><a href="" ui-sref="forgot">Forgot Password?</a></span></label>
-                <input type="password" ng-model="login.password">
+                <input type="password" ng-model="login.password" tabindex="2">
                 <label></label>
-                <button class="btn btn-accent btn-block" type="submit" ng-click="login.performLogin()" ladda="login.loadingLogin">Login</button>
-                <button class="btn btn-light btn-block" type="submit" ng-click="login.registerUser()" ladda="login.loadingRegister">Register</button>
+                <button class="btn btn-accent btn-block" type="submit" ng-click="login.performLogin()" ladda="login.loadingLogin" tabindex="3">Login</button>
+                <button class="btn btn-light btn-block" type="submit" ng-click="login.registerUser()" ladda="login.loadingRegister" tabindex="4">Register</button>
             </form>
         </div>
     </div>
