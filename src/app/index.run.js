@@ -6,7 +6,7 @@
         .run(runBlock);
 
     /** @ngInject */
-    function runBlock($log, $rootScope, $state) {
+    function runBlock($log, $rootScope, $state, $window, $location) {
 
         /*eslint-disable */
         $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
@@ -20,6 +20,14 @@
         $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams, error) {
             //Prevent left menu from persisting across states
             angular.element('body').css({left: 0});
+        });
+        $rootScope.$on('$stateChangeSuccess',
+            function(){
+ 
+                if (!$window.ga)
+                    return;
+ 
+                $window.ga('send', 'pageview', { page: $location.path() });
         });
         /*eslint-enable */
     }

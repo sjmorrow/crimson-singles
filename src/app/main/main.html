@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="row guardian-list">
-            <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="guardian in main.userProfile.guardians" ng-class="{'active': guardian.isActive}">
+            <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="(key, guardian) in main.guardians" ng-class="{'active': guardian.isActive}">
                 <div class="guardian well">
                     <div class="row">
                         <div class="col-xs-8">

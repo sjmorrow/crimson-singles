@@ -9,7 +9,7 @@
     "angular-messages": "~1.4.2",
     "angular-resource": "~1.4.2",
     "angular-toastr": "~1.5.0",
-    "angular-touch": "~1.4.2",
+    "angular-touch": "~1.5.0",
     "angular-ui-router": "~0.2.15",
     "angular-swing": "git://github.com/sjmorrow/angular-swing.git#master",
     "animate.css": "~3.4.0",
