@@ -33,7 +33,10 @@
                         var deferred = $q.defer();
                         FBAuth.$requireAuth().then(function(authData) {
                             var fbRef = new Firebase(FIREBASE_URL + '/users/' + authData.uid);
-                            deferred.resolve($firebaseObject(fbRef));
+                            var userProfile = $firebaseObject(fbRef);
+                            userProfile.$loaded(function() {
+                                deferred.resolve(userProfile);
+                            });
                         }).catch(function(error) {
                             deferred.reject(error);
                         });

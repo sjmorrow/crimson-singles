@@ -8,14 +8,37 @@
     /** @ngInject */
     function MainController(FBAuth, $state, userProfile, $scope, activeGuardian, activateGuardian, $firebaseArray) {
         var vm = this;
+        //userProfile guaranteed to be loaded and updated in real-time with server
         vm.userProfile = userProfile;
-        vm.guardians = $firebaseArray(userProfile.$ref().child('guardians'));
+        //NOTE: Need to set this here for now until I find a way to inject a $loaded userProfile directly into the factory
+        activeGuardian.setUserProfile(userProfile);
+        //TODO: On state change success, double check guardian is active
         
         $scope.$on('$stateChangeSuccess', function(event, toState) {
-            if(toState.name === "home") {
-                //User just got here. Let's make sure the VM is updated with the latest data   
+            if($state.is('home')) {
+                
+                if(!userProfile.XBL_ID && !userProfile.PSN_ID) {
+                    vm.requiresNetworkId = true;
+                    userProfile.$bindTo($scope, 'profile');
+                }
+                
+                if(!userProfile.guardians || userProfile.guardians.length === 0) {
+                    vm.needsToCreateGuardian = true;
+                } else {
+                    vm.needsToCreateGuardian = false;
+                    if(activeGuardian.exists()) {
+                        vm.guardianExpireTime = activeGuardian.getExpireDate().fromNow();
+                        vm.hasActiveGuardian = true;
+                    } else {
+                        vm.guardianExpireTime = null;
+                        vm.hasActiveGuardian = false;
+                    }
+                }
             }
         });
+
+        vm.guardians = $firebaseArray(userProfile.$ref().child('guardians'));
+        
         vm.hideNetworkIdInput = function() {
             if(userProfile.XBL_ID || userProfile.PSN_ID) {
                 vm.requiresNetworkId = false;
@@ -25,29 +48,11 @@
         };
         
         activeGuardian.onChange(function(hasActiveGuardian) {
-             vm.hasActiveGuardian = hasActiveGuardian;
+            vm.hasActiveGuardian = hasActiveGuardian;
             if(hasActiveGuardian) {
                 vm.guardianExpireTime = activeGuardian.getExpireDate().fromNow();
             } else {
                 vm.guardianExpireTime = null;
-            }
-        });
-        
-        userProfile.$loaded(function() {
-            if(!userProfile.XBL_ID && !userProfile.PSN_ID) {
-                vm.requiresNetworkId = true;
-                userProfile.$bindTo($scope, 'profile');
-            }
-            if(!userProfile.guardians || userProfile.guardians.length === 0) {
-                vm.needsToCreateGuardian = true;
-            }
-            activeGuardian.setUserProfile(userProfile);
-            if(activeGuardian.exists()) {
-                vm.guardianExpireTime = activeGuardian.getExpireDate().fromNow();
-                vm.hasActiveGuardian = true;
-            } else {
-                vm.guardianExpireTime = null;
-                vm.hasActiveGuardian = false;
             }
         });
 
@@ -56,9 +61,7 @@
             $state.go('login');
         };
         
-        vm.activateGuardian = function(guardian) {
-            //TODO: Move this to activateGuardian service, and set correct expireTime in minutes
-            //activeGuardian.activateGuardian(guardian, 1);  
+        vm.activateGuardian = function(guardian) {  
             activateGuardian(guardian);
         };
     }
