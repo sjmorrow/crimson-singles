@@ -7,7 +7,7 @@
 
     /** @ngInject */
     function CardsController(FIREBASE_URL, $firebaseObject, 
-                              $firebaseArray, $log, currentAuth, activeGuardians) {
+                              $firebaseArray, $log, currentAuth, activeGuardians, activeGuardian) {
         var vm = this;
         vm.activeGuardians = activeGuardians;
         
@@ -35,11 +35,10 @@
             }
         }
         vm.showInStack = function(guardian) {
-            return ((vm.currentUser.XBL_ID != guardian.networkId 
-                            && guardian.platform == 'XBOX') 
-                        || (vm.currentUser.PSN_ID != guardian.networkId
-                            && guardian.platform == 'PSN'))
-                        && guardian.activatedOn >= vm.activatedTimestamp;
+            var isUsersXBLGuardian = (vm.currentUser.XBL_ID === guardian.networkId && guardian.platform === 'XBOX');
+            var isUsersPSNGuardian = (vm.currentUser.PSN_ID === guardian.networkId && guardian.platform === 'PSN');
+            var isSamePlatform = (activeGuardian.getActiveGuardian().platform === guardian.platform);
+            return ((!isUsersXBLGuardian && !isUsersPSNGuardian) && isSamePlatform && guardian.activatedOn >= vm.activatedTimestamp);
         }
         vm.dequeue = function() {
             var removed = vm.activeGuardians.splice(0, 1)[0];            
