@@ -6,7 +6,7 @@
         .factory('activateGuardianModal', activateGuardianModal);
 
     /** @ngInject */
-    function activateGuardianModal($uibModal, activeGuardians, activeGuardian, $state) {
+    function activateGuardianModal($uibModal, activeGuardians, activeGuardian) {
 
         return function (guardian) {
             $uibModal.open({

@@ -14,7 +14,7 @@
         activeGuardian.setUserProfile(userProfile);
         //TODO: On state change success, double check guardian is active
 
-        $scope.$on('$stateChangeSuccess', function (event, toState) {
+        $scope.$on('$stateChangeSuccess', function () {
             if ($state.is('home')) {
 
                 if (!userProfile.XBL_ID && !userProfile.PSN_ID) {

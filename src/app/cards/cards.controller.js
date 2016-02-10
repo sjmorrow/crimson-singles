@@ -7,7 +7,7 @@
 
     /** @ngInject */
     function CardsController(FIREBASE_URL, $firebaseObject, 
-                              $firebaseArray, $log, currentAuth, activeGuardians, activeGuardian, $uibModal, $state) {
+                              $firebaseArray, $log, currentAuth, activeGuardians, activeGuardian, $uibModal, $state, $window) {
         var vm = this;
         if(!activeGuardian.exists()) {
             $uibModal.open({
@@ -55,7 +55,7 @@
                 return removed
             } ;       
             vm.refresh = function() {
-                window.location.reload()
+                $window.location.reload();
                 //vm.activeGuardians = $firebaseArray(activeGuardians.$ref())
             };
         }
