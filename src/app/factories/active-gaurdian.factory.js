@@ -42,7 +42,11 @@
         
         function setExpireTimer(expiresOn) {
             $timeout(function() {
-                $rootScope.$broadcast('$guardianExpired');
+                userProfile.activeGuardianId = null;
+                userProfile.activeGuardianRef = null;
+                userProfile.$save().then(function(){
+                    $rootScope.$broadcast('$guardianExpired');
+                });
             }, expiresOn.valueOf() - moment().valueOf());
         }
 
