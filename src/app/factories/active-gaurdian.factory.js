@@ -6,13 +6,8 @@
         .factory('activeGuardian', activeGuardian);
 
     /** @ngInject */
-    function activeGuardian($timeout, $q, $firebaseObject, FIREBASE_URL, activeGuardians) {
+    function activeGuardian($timeout, $q, $firebaseObject, FIREBASE_URL, activeGuardians, $rootScope) {
         var userProfile = null;
-        
-        // Promise for notifying when active state has changed
-        // Resolves with true if guardian is now active
-        // Resolves with false if guardian is now expired
-        var guardianChangeNotifier = $q.defer();
         
         //Called in MainController, so guaranteed to be defined for all children
         function setUserProfile(_userProfile) {
@@ -23,7 +18,7 @@
         }
 
         function getExpireDate() {
-            if (getActiveGuardian().expiresOn !== undefined) {
+            if (angular.isDefined(getActiveGuardian().expiresOn)) {
                 return moment(getActiveGuardian().expiresOn);
             }
             return moment();
@@ -34,7 +29,7 @@
         }
 
         function exists() {
-            if ((userProfile.activeGuardianId === undefined)) {
+            if (angular.isUndefined(userProfile.activeGuardianId) || userProfile.activeGuardianId === null) {
                 return false;
             } else if ((getExpireDate().valueOf() - moment().valueOf()) > 0) {
                 return true;
@@ -44,23 +39,14 @@
                 return false;
             }
         }
-
-        function onChange(handler) {
-            if (handler) {
-                guardianChangeNotifier.promise.then(handler);
-            }
-            return guardianChangeNotifier.promise;
-        }
         
         function setExpireTimer(expiresOn) {
             $timeout(function() {
-                guardianChangeNotifier.resolve(false);
+                $rootScope.$broadcast('$guardianExpired');
             }, expiresOn.valueOf() - moment().valueOf());
         }
 
         function activateGuardian(guardian, minutes, gameMode) {
-            userProfile.activeGuardianId = guardian.$id;
-            userProfile.$save();
             var fbRef = new Firebase(FIREBASE_URL + '/users/' + userProfile.$id + '/guardians/' + guardian.$id);
             var fbGuardian = $firebaseObject(fbRef);
             fbGuardian.$loaded(function(guardian) {
@@ -77,10 +63,16 @@
                     globalGuardian.networkId = userProfile.PSN_ID;
                 }
                 angular.extend(globalGuardian, guardian);
-                activeGuardians.$add(globalGuardian);
-                //Guardian is active, tell the world
-                guardianChangeNotifier.resolve(true);
-                setExpireTimer(moment().add(minutes, 'minutes'));
+                activeGuardians.$add(globalGuardian).then(function(ref) {
+                    userProfile.activeGuardianRef = ref.key();
+                    userProfile.activeGuardianId = guardian.$id;
+                    userProfile.$save().then(function() {
+                        //Guardian is active, tell the world
+                        $rootScope.$broadcast('$guardianActivated')
+                        setExpireTimer(moment().add(minutes, 'minutes'));
+                        
+                    });
+                });
             });
         }
         
@@ -94,8 +86,7 @@
             getActiveGuardian: getActiveGuardian,
             exists: exists,
             setUserProfile: setUserProfile,
-            activateGuardian: activateGuardian,
-            onChange: onChange
+            activateGuardian: activateGuardian
         };
     }
 })();

@@ -6,7 +6,7 @@
         .controller('GuardiansController', GuardiansController);
 
     /** @ngInject */
-    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal, activeGuardians, userProfile, activateGuardian) {
+    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal, activeGuardians, userProfile, activateGuardianModal) {
         var vm = this;
 
         var fbRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid + '/guardians');
@@ -57,7 +57,7 @@
             vm.guardians.$save(key);
         };
         vm.activateGuardian = function(key) {
-            activateGuardian(vm.guardians[key]);
+            activateGuardianModal(vm.guardians[key]);
         };
     }
 })();

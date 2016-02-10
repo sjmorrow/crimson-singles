@@ -3,10 +3,10 @@
 
     angular
         .module('crimsonSingles')
-        .factory('activateGuardian', activateGuardian);
+        .factory('activateGuardianModal', activateGuardianModal);
 
     /** @ngInject */
-    function activateGuardian($uibModal, activeGuardians, activeGuardian, $state) {
+    function activateGuardianModal($uibModal, activeGuardians, activeGuardian, $state) {
 
         return function (guardian) {
             $uibModal.open({
@@ -50,7 +50,6 @@
                 var selectedGameMode = modal.selectedGameMode;
                 var minutesToActivate = parseInt(selectedLength);
                 activeGuardian.activateGuardian(guardian, minutesToActivate, selectedGameMode);
-                $state.go('home.cards');
             }).catch(function () {
 
             });
