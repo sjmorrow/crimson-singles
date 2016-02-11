@@ -1,7 +1,13 @@
 <div class="vertical-container">
     <ul class="stack" swing-stack swing-options="cards.swingOptions">
         <li class="empty-stack">
-            No more Guardians
+            <h2 class="font-light">No More Guardians</h2>
+            <hr/>
+            <p>
+                Found some guardians you like?<br/>View your <a href="/#/matches">matched guardians</a>
+                <br/><br/>
+                Otherwise, you can refresh the<br/>stack to start over
+            </p>
         </li>
         <li swing-card ng-repeat="guardian in cards.activeGuardians | orderBy:'activatedOn':true" 
             ng-if="cards.showInStack(guardian)"

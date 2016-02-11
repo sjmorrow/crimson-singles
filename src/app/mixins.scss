@@ -20,6 +20,22 @@
     border: 3px solid $medium-color;
 }
 
+.no-top-margin {
+    margin-top: 0;
+}
+
+hr {
+    border-top: 1px solid $accent-color;    
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
 $breakpoints: ( 
     'extra-small': ( min-width: 413px ),
     'card-max' : ( min-width: 500px ),

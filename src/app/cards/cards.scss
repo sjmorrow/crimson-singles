@@ -58,7 +58,11 @@ ul[swing-stack] {
             font-size: 24px;
             word-wrap: break-word;
             white-space: normal;
-            padding-top: 110px;
+            padding: 10px;
+            
+            p {
+                font-size: 18px;
+            }
         }
 
         .class-image {
