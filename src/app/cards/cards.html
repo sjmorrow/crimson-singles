@@ -12,7 +12,9 @@
         <li swing-card ng-repeat="guardian in cards.activeGuardians | orderBy:'activatedOn':true" 
             ng-if="cards.showInStack(guardian)"
             swing-on-throwoutleft="cards.dequeue()"
-            swing-on-throwoutright="cards.matchedGuardians.$add(cards.dequeue())">
+            swing-on-throwoutright="cards.matchedGuardians.$add(cards.dequeue())"
+            swing-on-dragmove="cards.dragged(eventObject)"
+            swing-on-dragend="cards.draggedStopped(eventObject)">
             <div class="class-image" style="background-image: url(../../assets/images/{{guardian.class}}.jpg);">
             </div>
             <div class="info">
@@ -25,7 +27,13 @@
                     <h4 class="class inline">{{guardian.class}}</h4>
                 </div> 
                 <h5>"{{guardian.bio}}"</h5>
-            </div>        
+            </div>  
+            <div class="hide-overlay">
+                <i class="icon-cross"/>
+            </div>
+            <div class="heart-overlay">
+               <i class="icon-heart"/>             
+            </div>
         </li>
     </ul>
 

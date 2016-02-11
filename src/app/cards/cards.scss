@@ -98,6 +98,38 @@ ul[swing-stack] {
         .class {
             font-weight: 700;
         }
+        
+        .heart-overlay {
+            opacity: 0;
+            border: 3px solid #03A173;
+            border-radius: 3px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            padding-top: 50px;
+            
+            i {
+                font-size: 124px;
+                color: #03A173;
+            }
+        }
+        
+        .hide-overlay {
+            opacity: 0;
+            border: 3px solid $accent-color;
+            border-radius: 3px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            padding-top: 50px;
+            
+            i {
+                font-size: 124px;
+                color: $accent-color;
+            }
+        }
     }
 }
 

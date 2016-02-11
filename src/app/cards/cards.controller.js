@@ -58,6 +58,23 @@
                 $window.location.reload();
                 //vm.activeGuardians = $firebaseArray(activeGuardians.$ref())
             };
+            vm.dragged = function(eventObject) {
+                var confidence = eventObject.throwOutConfidence;
+                if (eventObject) {
+                    if (eventObject.throwDirection > 0) {
+                        angular.element(eventObject.target).find('.heart-overlay').css('opacity', confidence);
+                    } else {
+                        angular.element(eventObject.target).find('.hide-overlay').css('opacity', confidence);
+                        angular.element(eventObject.target).css('opacity', 1.5 - confidence);
+                    }
+                }
+            };
+            vm.draggedStopped = function(eventObject) {
+                if (eventObject) {
+                    angular.element(eventObject.target).find('.heart-overlay, .hide-overlay').css('opacity', 0);
+                    angular.element(eventObject.target).css('opacity', 1);
+                }  
+            };
         }
     }
 })();
