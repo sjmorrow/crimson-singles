@@ -6,13 +6,15 @@
         .controller('MainController', MainController);
 
     /** @ngInject */
-    function MainController(FBAuth, $state, userProfile, $scope, activeGuardian, activateGuardianModal, $firebaseArray) {
+    function MainController(FBAuth, $state, userProfile, $scope, activeGuardian, activeGuardians, activateGuardianModal, $firebaseArray) {
         var vm = this;
         //userProfile guaranteed to be loaded and updated in real-time with server
         vm.userProfile = userProfile;
         //NOTE: Need to set this here for now until I find a way to inject a $loaded userProfile directly into the factory
         activeGuardian.setUserProfile(userProfile);
         //TODO: On state change success, double check guardian is active
+        
+        vm.activeGuardians = activeGuardians;
 
         $scope.$on('$stateChangeSuccess', function () {
             if ($state.is('home')) {

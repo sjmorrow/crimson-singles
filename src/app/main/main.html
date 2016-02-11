@@ -32,6 +32,11 @@
                 <button class="btn btn-accent btn-block btn-lg" ui-sref="home.guardians">Go Create a Guardian <i class="icon-add-user"></i></button>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="no-top-margin">{{main.activeGuardians.length}} Matchmaking Guardians</h1>
+            </div>
+        </div>
         <div class="row" ng-if="main.guardianExpireTime">
             <div class="col-xs-12 center-text">
                 You currently have a guardian activated in matchmaking. It will expire {{main.guardianExpireTime}}.
