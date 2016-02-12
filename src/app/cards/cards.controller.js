@@ -7,14 +7,13 @@
 
     /** @ngInject */
     function CardsController(FIREBASE_URL, $firebaseObject, 
-                              $firebaseArray, $log, currentAuth, activeGuardians, activeGuardian, $uibModal, $state, $window) {
+                              $firebaseArray, $log, currentAuth, activeGuardians, activeGuardian, modalAlert, $state, $window) {
         var vm = this;
         if(!activeGuardian.exists()) {
-            $uibModal.open({
-                templateUrl: 'app/cards/no-active-guardian.modal.html'
-            }).result.then(function() {
-                $state.go('home');
-            });
+            modalAlert('No Active Guardian', 'To view potential matches, you must first activate one of your guardians for matchmaking. You will be directed back to the home page where you can activate one of your guardains.')
+                .result.then(function() {
+                    $state.go('home');
+                });
         } else {
             vm.activeGuardians = activeGuardians;
 
