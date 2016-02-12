@@ -88,12 +88,15 @@ a {
     text-align: center;
 }
 
+.container-fluid {
+    position: relative;
+}
 [ui-view].ng-enter,
 [ui-view].ng-leave {
     position: absolute;
-    left: 0;
-    right: 0;
-    transition: all .5s ease-in-out;
+    left: $gutter-width;
+    right: $gutter-width;
+    transition: all 0.3s ease-in-out;
 }
 
 [ui-view].ng-enter {
