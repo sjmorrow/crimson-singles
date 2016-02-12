@@ -6,7 +6,7 @@
         .controller('ForgotController', ForgotController);
 
     /** @ngInject */
-    function ForgotController($firebaseAuth, FIREBASE_URL, $state, $uibModal) {
+    function ForgotController($firebaseAuth, FIREBASE_URL, $state, modalAlert) {
         var vm = this;
         var fbRef = new Firebase(FIREBASE_URL);
         var auth = $firebaseAuth(fbRef);
@@ -15,14 +15,10 @@
             auth.$resetPassword({
                 email: vm.email
             }).then(function () {
-                $uibModal.open({
-                    templateUrl: 'app/forgot-password/password-reset-successful.modal.html'
-                });
+                modalAlert("Success!", "Your password was reset succesfully! You will recieve an email shortly with a temporary password. Once you login you will be taken to the passowrd reset screen. You will have 24 hours to update your temporary password.");
                 $state.go('login');
             }).catch(function () {
-                $uibModal.open({
-                    templateUrl: 'app/forgot-password/password-reset-failed.modal.html'
-                });
+                modalAlert("Reset Password Error", "Whoops! An error occured resetting your password. Can you double check that you entered the correct email?");
             });
         };
     }
