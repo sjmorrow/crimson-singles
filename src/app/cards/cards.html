@@ -9,36 +9,37 @@
                 Otherwise, you can refresh the<br/>stack to start over
             </p>
         </li>
-        <li swing-card ng-repeat="guardian in cards.activeGuardians | orderBy:'activatedOn':true" 
+        <li swing-card swipe-card ng-repeat="guardian in cards.activeGuardians | orderBy:'activatedOn':true" 
             ng-if="cards.showInStack(guardian)"
-            swing-on-throwoutleft="cards.dequeue()"
-            swing-on-throwoutright="cards.matchedGuardians.$add(cards.dequeue())"
-            swing-on-dragmove="cards.dragged(eventObject)"
-            swing-on-dragend="cards.draggedStopped(eventObject)">
+            swing-on-throwoutleft="cards.dequeue()" 
+            swing-on-throwoutright="cards.matchedGuardians.$add(cards.dequeue())" 
+            swing-on-dragmove="dragged(eventObject)" 
+            swing-on-dragend="draggedStopped(eventObject)">
             <div class="class-image" style="background-image: url(../../assets/images/{{guardian.class}}.jpg);">
             </div>
             <div class="info">
                 <h3 class="gamertag">
                     <img ng-if="guardian.platform == 'XBOX'"src="../../assets/images/xbox-logo.png"/>
                     <img ng-if="guardian.platform == 'PSN'" src="../../assets/images/psn-logo.png"/>
-                    {{guardian.networkId}}</h3>
+                    {{guardian.networkId}}
+                </h3>
                 <div>
                     <h4 class="light-level inline">{{guardian.level}}</h4>
                     <h4 class="class inline">{{guardian.class}}</h4>
-                </div> 
+                </div>
                 <h5>"{{guardian.bio}}"</h5>
-            </div>  
+            </div>
             <div class="hide-overlay">
-                <i class="icon-cross"/>
+                <i class="icon-cross" />
             </div>
             <div class="heart-overlay">
-               <i class="icon-heart"/>             
+                <i class="icon-heart" />
             </div>
         </li>
     </ul>
 
     <div class="controls">
-        <div class="instructions">Swipe left to hide, swipe right to like</div>        
+        <div class="instructions">Swipe left to hide, swipe right to like</div>
         <div class="control inline" ng-click="cards.refresh()"><i class="icon-ccw"></i></div>
         <div class="control large inline" ng-click="cards.dequeue()"><i class="icon-cross"></i></div>
         <div class="control large inline" ng-click="cards.matchedGuardians.$add(cards.dequeue())"><i class="icon-heart"></i></div>
