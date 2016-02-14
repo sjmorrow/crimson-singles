@@ -6,7 +6,7 @@
         .controller('GuardiansController', GuardiansController);
 
     /** @ngInject */
-    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal, activeGuardians, activeGuardian, userProfile, activateGuardianModal) {
+    function GuardiansController(FIREBASE_URL, $firebaseArray, currentAuth, $uibModal, activeGuardians, activeGuardian, userProfile, activateGuardianModal, modalAlert) {
         var vm = this;
 
         var fbRef = new Firebase(FIREBASE_URL + '/users/' + currentAuth.uid + '/guardians');
@@ -35,8 +35,14 @@
             vm.guardians.$save(key);
         };
         vm.selectPlatform = function(key, platform) {
-            vm.guardians[key].platform = platform;
-            vm.guardians.$save(key);
+            if (platform === 'XBOX' && angular.isUndefined(userProfile.XBL_ID)) {
+                modalAlert("No Xbox Live Gamertag", "To select this platform, please go to the account page and enter your Xbox Live Gamertag");   
+            } else if (platform === 'PSN' && angular.isUndefined(userProfile.PSN_ID)) {
+                modalAlert("No PSN ID", "To select this platform, please go to the account page and enter your PSN ID");
+            } else {
+                vm.guardians[key].platform = platform;
+                vm.guardians.$save(key);
+            }
         };
         vm.activateGuardian = function(key) {
             activateGuardianModal(vm.guardians[key]);
