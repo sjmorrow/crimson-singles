@@ -18,10 +18,11 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController() {
+    function NavbarController(activeGuardians) {
       var vm = this;
       vm.title = "Crimson Singles";
       vm.navbarCollapsed = false;
+      vm.activeGuardians = activeGuardians;
     }
   }
 
