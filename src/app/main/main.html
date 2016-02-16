@@ -34,7 +34,7 @@
         </div>
         <div class="row" ng-if="main.guardianExpireTime">
             <div class="col-xs-12 center-text">
-                You currently have a guardian activated in matchmaking. It will expire {{main.guardianExpireTime}}.
+                <timer countdown end-time="main.guardianExpireTime">Expires in {{minutes}}:{{sseconds}}</timer>
             </div>
         </div>
         <div class="row guardian-list">

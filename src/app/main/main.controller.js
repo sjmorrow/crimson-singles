@@ -27,7 +27,7 @@
                 } else {
                     vm.needsToCreateGuardian = false;
                     if (activeGuardian.exists()) {
-                        vm.guardianExpireTime = activeGuardian.getExpireDate().fromNow();
+                        vm.guardianExpireTime = activeGuardian.getExpireDate().valueOf();
                         vm.hasActiveGuardian = true;
                     } else {
                         vm.guardianExpireTime = null;
@@ -42,7 +42,7 @@
             vm.hasActiveGuardian = false;
         });
         $scope.$on('$guardianActivated', function () {
-            vm.guardianExpireTime = activeGuardian.getExpireDate().fromNow();
+            vm.guardianExpireTime = activeGuardian.getExpireDate().valueOf();
             vm.hasActiveGuardian = true;
             $state.go('home.cards');
         });
