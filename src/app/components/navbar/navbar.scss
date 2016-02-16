@@ -18,6 +18,28 @@ nav.navbar {
         position: relative;
         top: -4px;
     }
+    
+    .active-count {
+        position: absolute;
+        top: 3px;
+        right: 15px; 
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        padding: 5px 10px 6px 10px;
+        font-weight: 300;
+        
+        
+        svg {
+            height: 12px;
+            width: 12px;
+            fill: white;
+        }
+        
+        .count {
+            margin-left: 5px;
+            font-weight: bold;
+        }
+    }
 }
 
 .spmenu {
