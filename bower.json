@@ -42,6 +42,15 @@
         "scripts/slide.and.push.js",
         "styles/slide.and.push.css"
       ]
+    },
+    "entypo-plus": {
+        "main": [
+          "css/entypo-plus.css",
+          "fonts/entypo-plus.eot",
+          "fonts/entypo-plus.woff",
+          "fonts/entypo-plus.ttf",
+          "fonts/entypo-plus.svg"
+        ]
     }
   },
   "resolutions": {
