@@ -50,16 +50,20 @@ browserSync.use(browserSyncSpa({
 }));
 
 gulp.task('serve', ['watch'], function () {
-  if (argv.dev) { 
-    fs.copySync('./config/dev.constants.js', 'src/app/config.constants.js');
-  }
   if (argv.prod) {
     fs.copySync('./config/prod.constants.js', 'src/app/config.constants.js');
+  } else {
+    fs.copySync('./config/dev.constants.js', 'src/app/config.constants.js');
   }
   browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
 });
 
 gulp.task('serve:dist', ['build'], function () {
+  if (argv.prod) {
+    fs.copySync('./config/prod.constants.js', 'src/app/config.constants.js');
+  } else {
+    fs.copySync('./config/dev.constants.js', 'src/app/config.constants.js');
+  }
   browserSyncInit(conf.paths.dist);
 });
 
