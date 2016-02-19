@@ -1,0 +1,8 @@
+{
+  "name": "crimsonSingles.config",
+  "constants": {
+    "config": {
+      "FIREBASE_URL": "https://crimson-singles.firebaseio.com"
+    }
+  }
+}

@@ -11,9 +11,6 @@ var util = require('util');
 
 var proxyMiddleware = require('http-proxy-middleware');
 
-var argv = require('yargs').argv;
-var fs = require('fs-extra');
-
 function browserSyncInit(baseDir, browser) {
   browser = browser === undefined ? 'default' : browser;
 
@@ -50,20 +47,10 @@ browserSync.use(browserSyncSpa({
 }));
 
 gulp.task('serve', ['watch'], function () {
-  if (argv.prod) {
-    fs.copySync('./config/prod.constants.js', 'src/app/config.constants.js');
-  } else {
-    fs.copySync('./config/dev.constants.js', 'src/app/config.constants.js');
-  }
   browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
 });
 
 gulp.task('serve:dist', ['build'], function () {
-  if (argv.prod) {
-    fs.copySync('./config/prod.constants.js', 'src/app/config.constants.js');
-  } else {
-    fs.copySync('./config/dev.constants.js', 'src/app/config.constants.js');
-  }
   browserSyncInit(conf.paths.dist);
 });
 

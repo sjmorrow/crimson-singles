@@ -6,3 +6,5 @@ coverage/
 .tmp/
 dist/
 config.constants.js
+configDev.js
+config.js
